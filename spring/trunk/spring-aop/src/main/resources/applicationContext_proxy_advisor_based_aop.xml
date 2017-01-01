@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<!-- Target class -->
+	<bean id="target" class="edu.home.proxy.advisor.Instrumentalist3">
+		<property name="instrument">
+			<!-- inner bean -->
+			<bean class="edu.home.proxy.advisor.Guitar3" />
+		</property>
+	</bean>
+
+	<!-- advice(s) -->
+	<bean id="audience" class="edu.home.proxy.advisor.Audience3" />
+	
+	<!-- Advisor 
+	<bean id="advisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="advice" ref="audience"/>
+    	<property name="mappedName" value="partice"/>
+	</bean>-->
+
+	<!-- proxy bean class -->
+	<bean id="proxybean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<ref bean="target" />
+		</property>
+		<property name="interceptorNames">
+			<array>
+				<value>audience</value>
+			</array>
+		</property>
+	</bean>
+</beans>
