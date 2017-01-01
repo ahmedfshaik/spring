@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<context:annotation-config/>                     
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>connection.properties</value>
+			</array>
+		</property>
+	</bean>
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver_class_name}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean> 
+	<!-- Mixing autowiring with explicit wiring -->
+	<bean class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" autowire="byName">
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<property name="hibernateProperties">
+			<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.transaction.factory_class">
+					org.hibernate.transaction.JDBCTransactionFactory
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<array>
+				<value>Withdraw.hbm.xml</value>
+				<value>Deposit.hbm.xml</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="constructor" />
+
+	<bean class="org.springframework.transaction.support.TransactionTemplate" autowire="constructor"/>
+
+	<bean id="transferMoney" class="edu.home.tx.programmatic.TransferMoney"/>
+
+	<bean id="withdrawDao" class="edu.home.tx.programmatic.WithdrawDaoImpl" autowire="byType"/>
+
+	<bean id="depositDao" class="edu.home.tx.programmatic.DepositDaoImpl" autowire="byType"/>
+</beans>

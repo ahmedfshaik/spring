@@ -1,0 +1,68 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<context:component-scan base-package="edu.home.tx.declarative"/>                      
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>connection.properties</value>
+			</array>
+		</property>
+	</bean>
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver_class_name}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean> 
+	<bean class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" autowire="byName">
+		<!-- <property name="dataSource" ref="dataSource"/>  -->
+		<property name="hibernateProperties">
+			<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.transaction.factory_class">
+					org.hibernate.transaction.JDBCTransactionFactory
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<array>
+				<value>Withdraw_Declarative.hbm.xml</value>
+				<value>Deposit_Declarative.hbm.xml</value>
+			</array>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="constructor"/>
+	
+	<!-- Declarative tx using Proxy based AOP-->
+	<!-- <bean id="proxyBean"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target">
+			<bean class="edu.aspire.tx.declarative.TransferMoney"/>
+		</property>
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="transfer">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean> -->
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/> 
+	 
+	<bean id="withdrawDao" class="edu.home.tx.declarative.WithdrawDaoImpl" autowire="byType"/>
+	<bean id="depositDao" class="edu.home.tx.declarative.DepositDaoImpl" autowire="byType"/>
+</beans>
