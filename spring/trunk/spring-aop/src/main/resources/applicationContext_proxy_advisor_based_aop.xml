@@ -14,11 +14,11 @@
 	<!-- advice(s) -->
 	<bean id="audience" class="edu.home.proxy.advisor.Audience3" />
 	
-	<!-- Advisor 
+	<!-- Advisor -->
 	<bean id="advisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
 		<property name="advice" ref="audience"/>
-    	<property name="mappedName" value="partice"/>
-	</bean>-->
+    	<property name="mappedName" value="perform"/>
+	</bean>
 
 	<!-- proxy bean class -->
 	<bean id="proxybean" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -27,7 +27,7 @@
 		</property>
 		<property name="interceptorNames">
 			<array>
-				<value>audience</value>
+				<value>advisor</value>
 			</array>
 		</property>
 	</bean>
