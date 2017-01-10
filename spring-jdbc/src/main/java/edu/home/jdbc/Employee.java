@@ -1,48 +1,53 @@
 package edu.home.jdbc;
+
 import java.io.Serializable;
 
 /*
- create table employee(eno number(4)primary key, ename varchar2(100), desig varchar2(100), sal number(6,2));
+ * create table employee(eno number(4)primary key, ename varchar2(100), desig varchar2(100), sal
+ * number(6,2));
  */
-public class Employee implements Serializable {
-	private int eno;
-	private String ename;
-	private String desig;
-	private double sal;
+public class Employee
+        implements Serializable {
 
-	public Employee() {
-	}
+    private static final long serialVersionUID = 1L;
+    private int eno;
+    private String ename;
+    private String desig;
+    private double sal;
 
-	public int getEno() {
-		return eno;
-	}
+    public Employee() {
+    }
 
-	public void setEno(int eno) {
-		this.eno = eno;
-	}
+    public int getEno() {
+        return eno;
+    }
 
-	public String getEname() {
-		return ename;
-	}
+    public void setEno(int eno) {
+        this.eno = eno;
+    }
 
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
+    public String getEname() {
+        return ename;
+    }
 
-	public String getDesig() {
-		return desig;
-	}
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
 
-	public void setDesig(String desig) {
-		this.desig = desig;
-	}
+    public String getDesig() {
+        return desig;
+    }
 
-	public double getSal() {
-		return sal;
-	}
+    public void setDesig(String desig) {
+        this.desig = desig;
+    }
 
-	public void setSal(double sal) {
-		this.sal = sal;
-	}
+    public double getSal() {
+        return sal;
+    }
+
+    public void setSal(double sal) {
+        this.sal = sal;
+    }
 
 }

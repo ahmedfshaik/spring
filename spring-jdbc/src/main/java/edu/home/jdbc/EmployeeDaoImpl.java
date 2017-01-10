@@ -21,7 +21,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				String query = "INSERT INTO EMPLOYEE(ENAME, DESIGNATION, SALARY) VALUES (?,?,?)";
+				String query = "INSERT INTO JDBC_EMPLOYEE(ENAME, DESIGNATION, SALARY) VALUES (?,?,?)";
 				PreparedStatement pstmt =con.prepareStatement(query);
 				//pstmt.setInt(1, emp.getEno());
 				pstmt.setString(1, emp.getEname());
@@ -38,7 +38,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 	//@Override
 	public Employee get(int eno) {
-		String query = "SELECT * FROM EMPLOYEE WHERE EID=?";
+		String query = "SELECT * FROM JDBC_EMPLOYEE WHERE EID=?";
 		Employee emp = jdbcTemplate.queryForObject(query, new EmployeeRowMapper(), eno); 
 		return emp;
 	}
