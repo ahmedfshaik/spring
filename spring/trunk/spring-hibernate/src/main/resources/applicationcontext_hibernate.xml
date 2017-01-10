@@ -32,11 +32,11 @@
 		<property name="password" value="${password}" />
 	</bean> 
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.dialect">${dialect}</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.use_sql_comments">true</prop>
@@ -48,14 +48,14 @@
 		</property>
 		<property name="mappingResources">
 			<array>
-				<value>Customer.hbm.xml</value>
+				<value>customer.hbm.xml</value>
 			</array>
 		</property>
 		<!-- Including all *.hbm.xml files from directory. -->
 		<!-- <property name="mappingDirectoryLocations"> <array> <value>classpath:.</value> 
 			</array> </property> -->
 	</bean>
-	<bean class="org.springframework.orm.hibernate3.HibernateTemplate"
+	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
 		autowire="byType" />
 
 	<!-- Below <bean> element no longer required -->

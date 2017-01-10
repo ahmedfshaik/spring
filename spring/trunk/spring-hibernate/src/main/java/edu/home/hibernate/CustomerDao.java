@@ -1,11 +1,12 @@
 package edu.home.hibernate;
 
 public interface CustomerDao {
-	public void save(Customer e);
 
-	public void update(Customer e);
+    void save(Customer e);
 
-	public void delete(int eno);
+    void update(Customer e);
 
-	public Customer get(int eno);
+    void delete(int eno);
+
+    Customer get(int eno);
 }

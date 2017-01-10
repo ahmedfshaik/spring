@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="edu.home.tx.declarative.Deposit" table="DEPOSIT">
-		<id name="accno" type="integer" column="ACCNO">
+	<class name="edu.home.tx.programmatic.Withdraw" table="PRG_TX_WITHDRAW">
+		<id name="accno" column="ACCNO" type="integer">
 			<generator class="assigned" />
 		</id>
-		<property name="name" type="string" column="NAME"/>
-		<property name="amount" type="integer" column="AMOUNT"/>
+		<property name="name" column="NAME" type="string" />
+		<property name="amount" column="AMOUNT" type="integer" />
 	</class>
 </hibernate-mapping>

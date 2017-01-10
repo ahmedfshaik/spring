@@ -7,7 +7,7 @@ public class SpringContextUtils {
 	private static ApplicationContext context;
 	static {
 		context = new ClassPathXmlApplicationContext(
-				"applicationContext_Declarative_Tx.xml");
+				"applicationcontext_declarative_tx.xml");
 	}
 
 	public static ApplicationContext getContext() {
