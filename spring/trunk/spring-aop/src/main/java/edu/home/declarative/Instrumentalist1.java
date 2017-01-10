@@ -1,17 +1,19 @@
 package edu.home.declarative;
 
-public class Instrumentalist1 implements Performer1 {
-	private Instrument1 instrument;
+public class Instrumentalist1
+        implements Performer1 {
 
-	public void setInstrument(Instrument1 instrument) {
-		this.instrument = instrument;
-	}
+    private Instrument1 instrument;
 
-	public Instrument1 getInstrument() {
-		return instrument;
-	}
+    public void setInstrument(Instrument1 instrument) {
+        this.instrument = instrument;
+    }
 
-	public void perform() throws PerformanceException1 {
-		instrument.play();
-	}
+    public Instrument1 getInstrument() {
+        return instrument;
+    }
+
+    public void perform() throws PerformanceException1 {
+        instrument.play();
+    }
 }

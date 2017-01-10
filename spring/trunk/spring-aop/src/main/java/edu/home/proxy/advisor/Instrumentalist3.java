@@ -1,24 +1,26 @@
 package edu.home.proxy.advisor;
 
-public class Instrumentalist3 implements Performer3 {
-	private Instrument3 instrument;
+public class Instrumentalist3
+        implements Performer3 {
 
-	public void setInstrument(Instrument3 instrument) {
-		this.instrument = instrument;
-	}
+    private Instrument3 instrument;
 
-	public Instrument3 getInstrument() {
-		return instrument;
-	}
+    public void setInstrument(Instrument3 instrument) {
+        this.instrument = instrument;
+    }
 
-	// @Override
-	public void perform() throws PerformanceException3 {
-		instrument.play();
-	}
+    public Instrument3 getInstrument() {
+        return instrument;
+    }
 
-	// @Override
-	public void partice() throws PerformanceException3 {
-		instrument.play();
+    // @Override
+    public void perform() throws PerformanceException3 {
+        instrument.play();
+    }
 
-	}
+    // @Override
+    public void partice() throws PerformanceException3 {
+        instrument.play();
+
+    }
 }

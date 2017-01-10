@@ -1,12 +1,16 @@
 package edu.home.annotation;
 
-public class PerformanceException2 extends Exception {
-	public PerformanceException2() {
-		super();
-	}
+public class PerformanceException2
+        extends Exception {
 
-	public PerformanceException2(String message) {
-		super(message);
-	}
+    private static final long serialVersionUID = 1L;
+
+    public PerformanceException2() {
+        super();
+    }
+
+    public PerformanceException2(String message) {
+        super(message);
+    }
 
 }

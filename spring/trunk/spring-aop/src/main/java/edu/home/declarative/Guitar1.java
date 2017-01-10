@@ -1,8 +1,10 @@
 package edu.home.declarative;
 
-public class Guitar1 implements Instrument1 {
-	public void play() {
-		System.out.println("Strum strum strum");
-		// throw new PerformanceException1();
-	}
+public class Guitar1
+        implements Instrument1 {
+
+    public void play() {
+        System.out.println("Strum strum strum");
+        // throw new PerformanceException1();
+    }
 }
