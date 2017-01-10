@@ -10,44 +10,46 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class Audience2 {
-	@Pointcut("execution(* edu.home.annotation.Performer2.perform(..))")
-	public void performance() {
-	}
 
-	@Before("performance()")
-	public void takeSeats() {
-		System.out.println("The audience is taking their seats.....");
-	}
+    @Pointcut("execution(* edu.home.annotation.Performer2.perform(..))")
+    public void performance() {
+    }
 
-	@Before("performance()")
-	public void turnOffCellPhones() {
-		System.out.println("The audience is turning off their cellphones");
-	}
+    @Before("performance()")
+    public void takeSeats() {
+        System.out.println("@Before:The audience is taking their seats.....");
+    }
 
-	@AfterReturning("performance()")
-	public void applaud() {
-		System.out.println("CLAP CLAP CLAP CLAP CLAP");
-	}
+    @Before("performance()")
+    public void turnOffCellPhones() {
+        System.out.println("@Before:The audience is turning off their cellphones");
+    }
 
-	@AfterThrowing("performance()")
-	public void demandRefund() {
-		System.out.println("Boo! We want our money back!");
-	}
+    @AfterReturning("performance()")
+    public void applaud() {
+        System.out.println("@AfterReturning:CLAP CLAP CLAP CLAP CLAP");
+    }
 
-	@Around("performance()")
-	public void watchPerformance(ProceedingJoinPoint joinpoint) {
-		try {
-			System.out.println("***The audience is taking their seats***");
-			System.out.println("***The audience is turning off their cellphones***");
-			long start = System.currentTimeMillis();
+    @AfterThrowing("performance()")
+    public void demandRefund() {
+        System.out.println("@AfterThrowing:Boo! We want our money back!");
+    }
 
-			joinpoint.proceed();
+    @Around("performance()")
+    public void watchPerformance(ProceedingJoinPoint joinpoint) {
+        try {
+            System.out.println("@Around:***The audience is taking their seats***");
+            System.out.println("@Around:***The audience is turning off their cellphones***");
+            long start = System.currentTimeMillis();
 
-			long end = System.currentTimeMillis();
-			System.out.println("***CLAP CLAP CLAP CLAP CLAP***");
-			System.out.println("***The performance took:" + (end - start) + " milliseconds***");
-		} catch (Throwable e) {
-			System.out.println("***Boo! We want our money back***!");
-		}
-	}
+            joinpoint.proceed();
+
+            long end = System.currentTimeMillis();
+            System.out.println("@Around:***CLAP CLAP CLAP CLAP CLAP***");
+            System.out.println("@Around:***The performance took:" + (end - start) + " milliseconds***");
+        }
+        catch (Throwable e) {
+            System.out.println("@Around:***Boo! We want our money back***!");
+        }
+    }
 }

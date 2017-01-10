@@ -8,37 +8,38 @@ import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.ThrowsAdvice;
 
-//Advice
-public class Audience3 implements MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice, MethodInterceptor {
-	// @Override
-	public void before(Method method, Object[] data, Object target) throws Throwable {
-		System.out.println("The audience is taking their seats.");
-	}
+// Advice
+public class Audience3
+        implements MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice, MethodInterceptor {
 
-	/*
-	 * @Override public void before(Method method, Object[] data, Object target)
-	 * throws Throwable { System.out.println(
-	 * "The audience is turning off their cellphones"); }
-	 */
+    // @Override
+    public void before(Method method, Object[] data, Object target) throws Throwable {
+        System.out.println("The audience is taking their seats.");
+    }
 
-	// @Override
-	public void afterReturning(Object returnValue, Method method, Object[] data, Object target) throws Throwable {
-		System.out.println("CLAP CLAP CLAP CLAP CLAP");
-	}
+    /*
+     * @Override public void before(Method method, Object[] data, Object target) throws Throwable {
+     * System.out.println( "The audience is turning off their cellphones"); }
+     */
 
-	public void afterThrowing(Method method, Object[] data, Object target, PerformanceException3 e) {
-		System.out.println("Boo! We want our money back!");
-	}
+    // @Override
+    public void afterReturning(Object returnValue, Method method, Object[] data, Object target) throws Throwable {
+        System.out.println("CLAP CLAP CLAP CLAP CLAP");
+    }
 
-	// @Override
-	public Object invoke(MethodInvocation joinpoint) throws Throwable {
-		Object obj = null;
-		long start = System.currentTimeMillis();
+    public void afterThrowing(Method method, Object[] data, Object target, PerformanceException3 e) {
+        System.out.println("Boo! We want our money back!");
+    }
 
-		obj = joinpoint.proceed();
+    // @Override
+    public Object invoke(MethodInvocation joinpoint) throws Throwable {
+        Object obj = null;
+        long start = System.currentTimeMillis();
 
-		long end = System.currentTimeMillis();
-		System.out.println("***The performance took***:" + (end - start) + " milliseconds");
-		return obj;
-	}
+        obj = joinpoint.proceed();
+
+        long end = System.currentTimeMillis();
+        System.out.println("***The performance took***:" + (end - start) + " milliseconds");
+        return obj;
+    }
 }

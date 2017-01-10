@@ -1,17 +1,19 @@
 package edu.home.annotation;
 
-public class Instrumentalist2 implements Performer2 {
-	public void perform() throws PerformanceException2 {
-		instrument.play();
-	}
+public class Instrumentalist2
+        implements Performer2 {
 
-	private Instrument2 instrument;
+    public void perform() throws PerformanceException2 {
+        instrument.play();
+    }
 
-	public void setInstrument(Instrument2 instrument) {
-		this.instrument = instrument;
-	}
+    private Instrument2 instrument;
 
-	public Instrument2 getInstrument() {
-		return instrument;
-	}
+    public void setInstrument(Instrument2 instrument) {
+        this.instrument = instrument;
+    }
+
+    public Instrument2 getInstrument() {
+        return instrument;
+    }
 }

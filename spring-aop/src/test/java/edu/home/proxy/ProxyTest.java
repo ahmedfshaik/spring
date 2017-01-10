@@ -8,7 +8,10 @@ public class ProxyTest {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext_proxy_based_aop.xml");
         Performer pRef = (Performer) context.getBean("proxybean");
+        System.out.println("*****Partice*****");
         pRef.partice();
+        System.out.println("*****Perform*****");
         pRef.perform();
+
     }
 }

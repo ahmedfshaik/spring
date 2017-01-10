@@ -1,11 +1,15 @@
 package edu.home.proxy;
 
-public class PerformanceException extends Exception {
-	public PerformanceException() {
-		super();
-	}
+public class PerformanceException
+        extends Exception {
 
-	public PerformanceException(String message) {
-		super(message);
-	}
+    private static final long serialVersionUID = 1L;
+
+    public PerformanceException() {
+        super();
+    }
+
+    public PerformanceException(String message) {
+        super(message);
+    }
 }
