@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="edu.home.tx.declarative.Withdraw" table="WITHDRAW">
+	<class name="edu.home.tx.declarative.Withdraw" table="DECL_TX_WITHDRAW">
 		<id name="accno" type="integer" column="ACCNO">
 			<generator class="assigned" />
 		</id>

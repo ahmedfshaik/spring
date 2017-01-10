@@ -1,6 +1,7 @@
 package edu.home.tx.declarative;
 //DepositDaoImpl.java
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 public class DepositDaoImpl extends HibernateDaoSupport {
 	public Deposit read(int id) {

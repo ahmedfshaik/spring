@@ -23,11 +23,11 @@
 		<property name="username" value="${username}" />
 		<property name="password" value="${password}" />
 	</bean> 
-	<bean class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" autowire="byName">
+	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" autowire="byName">
 		<!-- <property name="dataSource" ref="dataSource"/>  -->
 		<property name="hibernateProperties">
 			<props>
-			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+			<prop key="hibernate.dialect">${dialect}</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.use_sql_comments">true</prop>
@@ -38,14 +38,14 @@
 		</property>
 		<property name="mappingResources">
 			<array>
-				<value>Withdraw_Declarative.hbm.xml</value>
-				<value>Deposit_Declarative.hbm.xml</value>
+				<value>withdraw_declarative.hbm.xml</value>
+				<value>deposit_declarative.hbm.xml</value>
 			</array>
 		</property>
 	</bean>
 
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="constructor"/>
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager" autowire="constructor"/>
 	
 	<!-- Declarative tx using Proxy based AOP-->
 	<!-- <bean id="proxyBean"
