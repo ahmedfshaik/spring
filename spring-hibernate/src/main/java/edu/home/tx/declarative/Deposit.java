@@ -1,40 +1,44 @@
 package edu.home.tx.declarative;
 
-//Deposit.java
+// Deposit.java
 import java.io.Serializable;
+
 /*
- * create  table deposit(accno number(3)primary key, name varchar2(100), amount number(5));
- * insert into deposit  values(1, 'Suresh', 200);
+ * create table deposit(accno number(3)primary key, name varchar2(100), amount number(5)); insert
+ * into deposit values(1, 'Suresh', 200);
  */
-public class Deposit implements Serializable {
-	private int accno;
-	private String name;
-	private int amount;
+public class Deposit
+        implements Serializable {
 
-	public Deposit() {
-	}
+    private static final long serialVersionUID = 1L;
+    private int accno;
+    private String name;
+    private int amount;
 
-	public int getAccno() {
-		return accno;
-	}
+    public Deposit() {
+    }
 
-	public void setAccno(int accno) {
-		this.accno = accno;
-	}
+    public int getAccno() {
+        return accno;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setAccno(int accno) {
+        this.accno = accno;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getAmount() {
-		return amount;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
