@@ -47,21 +47,26 @@
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager" autowire="constructor"/>
 	
-	<!-- Declarative tx using Proxy based AOP-->
-	<!-- <bean id="proxyBean"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="target">
-			<bean class="edu.aspire.tx.declarative.TransferMoney"/>
-		</property>
+	<!-- Declarative tx using Proxy based AOP
+	 <bean id="proxyBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 		<property name="transactionManager" ref="transactionManager"/>
 		<property name="transactionAttributes">
 			<props>
 				<prop key="transfer">PROPAGATION_REQUIRED</prop>
 			</props>
 		</property>
+		<property name="proxyInterfaces">
+			<array>
+				<value>edu.home.tx.declarative.ITransferMoney</value>
+			</array>
+		</property>
+		<property name="target">
+			<bean class="edu.aspire.tx.declarative.TransferMoney"/>
+		</property>
+		
 	</bean> -->
 	
-	<tx:annotation-driven transaction-manager="transactionManager"/> 
+	 <tx:annotation-driven transaction-manager="transactionManager"/> 
 	 
 	<bean id="withdrawDao" class="edu.home.tx.declarative.WithdrawDaoImpl" autowire="byType"/>
 	<bean id="depositDao" class="edu.home.tx.declarative.DepositDaoImpl" autowire="byType"/>
