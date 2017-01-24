@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/applicationContext_Hibernate.xml")
+@ContextConfiguration("/applicationcontext_hibernate.xml")
 public class SpringHibernateTest {
 
     @Autowired
