@@ -10,23 +10,20 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.home.controller.*" })
+@ComponentScan({ "edu.home.*" })
 @Import({ SecurityConfig.class })
 public class AppConfig {
 
-  @Bean
-  public InternalResourceViewResolver viewResolver() {
-    InternalResourceViewResolver viewResolver
-                          = new InternalResourceViewResolver();
-    viewResolver.setViewClass(JstlView.class);
-    viewResolver.setPrefix("/WEB-INF/views/");
-    viewResolver.setSuffix(".jsp");
-    return viewResolver;
-  }
-
-}
-
-/*<context:component-scan base-package="com.mkyong.web.*" />
+	@Bean
+	public InternalResourceViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setViewClass(JstlView.class);
+		viewResolver.setPrefix("/WEB-INF/views/");
+		viewResolver.setSuffix(".jsp");
+		return viewResolver;
+	}
+	
+}/*<context:component-scan base-package="com.mkyong.web.*" />
 
 <bean
   class="org.springframework.web.servlet.view.InternalResourceViewResolver">
