@@ -9,27 +9,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig
-        extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("mkyong").password("123456").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
-    }
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("mkyong").password("123456").roles("USER");
+		auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
+	}
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").antMatchers("/dba/**").access(
-                "hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')").and().formLogin();
-
-    }
+		http.authorizeRequests()
+			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/dba/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')")
+			.and().formLogin();
+		
+	}
 }
-
-/*
- * equivalent of the Spring Security xml file :
+/* equivalent of the Spring Security xml file :
  * <http auto-config="true"> 
  *   <intercept-url pattern="/admin**" access="ROLE_ADMIN" /> 
  *   <intercept-url pattern="/dba**" access="ROLE_ADMIN,ROLE_DBA" /> 
