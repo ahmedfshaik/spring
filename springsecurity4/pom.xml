@@ -9,8 +9,8 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<jdk.version>1.6</jdk.version>
-		<spring.version>3.2.8.RELEASE</spring.version>
-		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<spring.version>5.2.9</spring.version> <!--3.2.8.RELEASE-->
+		<spring.security.version>5.2.9</spring.security.version><!--3.2.3.RELEASE-->
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 	</properties>
